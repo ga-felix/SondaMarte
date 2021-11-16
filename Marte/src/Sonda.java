@@ -31,7 +31,6 @@ class Sonda implements ObjetoMovel {
     }
 
     public void mover() {
-        int[] direcao = this.direcao.get(this.apontaPara());
-        this.somarVetores2D(this.posicao, direcao);
+        this.somarVetores2D(this.posicao, this.direcao.get(this.apontaPara()));
     }
 }
