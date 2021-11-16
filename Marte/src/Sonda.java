@@ -17,8 +17,9 @@ class Sonda implements ObjetoMovel {
         this.direcao.put("W", new int[]{-1, 0});
     }
 
-    private int[] somarVetores2D(int[] vetorA, int[] vetorB) {
-        return new int[]{vetorA[0] + vetorB[0], vetorA[1] + vetorB[1]};
+    private void somarVetores2D(int[] vetorA, int[] vetorB) {
+        vetorA[0] += vetorB[0];
+        vetorA[1] += vetorB[1];
     }
 
     public int[] posicaoAtual() {
@@ -31,6 +32,6 @@ class Sonda implements ObjetoMovel {
 
     public void mover() {
         int[] direcao = this.direcao.get(this.apontaPara());
-        this.posicao = this.somarVetores2D(this.posicao, direcao);
+        this.somarVetores2D(this.posicao, direcao);
     }
 }
