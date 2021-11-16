@@ -27,15 +27,26 @@ class Sonda {
         this.pontoCardeal = novoPonto;
     }
 
-    public void girarEsquerda() {
-
+    private void girarEsquerda() {
+        this.mudarPontoCardeal(this.bussola.calcularGiro(this.apontaPara(), "L"));
     }
 
-    public void girarDireita() {
-        
+    private void girarDireita() {
+        this.mudarPontoCardeal(this.bussola.calcularGiro(this.apontaPara(), "R"));
     }
 
-    public void mover() {
+    private void mover() {
         this.somarVetores2D(this.posicao, this.bussola.obterVetorDirecao(this.apontaPara()));
+    }
+
+    public void lerSinal(char sinal) {
+        switch(sinal) {
+            case 'L':
+                this.girarEsquerda();
+            case 'R':
+                this.girarDireita();
+            case 'M':
+                this.mover();
+        }
     }
 }
