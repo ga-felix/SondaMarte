@@ -6,7 +6,7 @@ public class Sonda implements Rastreavel {
     private String direcaoCardinal;
     private Bussola bussola;
 
-    Sonda(int x, int y, String direcaoCardinal) {
+    public Sonda(int x, int y, String direcaoCardinal) {
         this.posicao = new int[]{x, y};
         this.direcaoCardinal = direcaoCardinal;
         this.bussola = new Bussola();
