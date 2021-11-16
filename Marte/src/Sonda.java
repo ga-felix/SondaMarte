@@ -1,4 +1,4 @@
-public class Sonda {
+public class Sonda implements Rastreavel {
 
     private int[] posicao;
     private String direcaoCardinal;
