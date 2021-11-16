@@ -1,11 +1,10 @@
 public class FabricaSonda {
 
-    public static Sonda criar(int x, int y, String direcaoCardinal, Terreno alvo) {
+    public static Sonda criar(int x, int y, String direcaoCardinal) {
         Sonda sonda;
         try {
-            sonda = new Sonda(x, y, direcaoCardinal, alvo);
+            sonda = new Sonda(x, y, direcaoCardinal);
         } catch(Exception e) {
-            System.out.println(e);
             sonda = null;
         }
         return sonda;

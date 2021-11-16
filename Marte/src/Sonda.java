@@ -5,29 +5,15 @@ public class Sonda implements Rastreavel {
     private int[] posicao;
     private String direcaoCardinal;
     private Bussola bussola;
-    private Terreno terreno;
 
-    public int[] obterPosicaoAtual() {
-        return this.posicao;
-    }
-
-    private boolean aterrissou(Terreno alvo) {
-        int[] pos = this.obterPosicaoAtual();
-        return (pos[0] >= 0 && pos[0] < alvo.obterLinhas() && pos[1] >= 0 && pos[1] < alvo.obterColunas());
-    }
-
-    private Terreno tentarAterrissagem(Terreno alvo) throws Exception {
-        int[] pos = obterPosicaoAtual();
-        if(this.aterrissou(alvo) && !alvo.temObstaculo(pos[0], pos[1])) return alvo;
-        throw new Exception("A sonda não conseguiu aterrisar: ela caiu fora do terreno ou encontrou um obstáculo.");
-    }
-
-    public Sonda(int x, int y, String direcaoCardinal, Terreno alvo) throws Exception {
+    public Sonda(int x, int y, String direcaoCardinal) {
         this.posicao = new int[]{x, y};
         this.direcaoCardinal = direcaoCardinal;
         this.bussola = new Bussola();
-        this.terreno = this.tentarAterrissagem(alvo);
-        this.terreno.marcarPosicao(x, y);
+    }
+
+    public int[] obterPosicaoAtual() {
+        return this.posicao;
     }
 
     public String obterDirecao() {
@@ -52,10 +38,7 @@ public class Sonda implements Rastreavel {
     }
 
     private void mover() {
-        int[] pos = obterPosicaoAtual();
-        this.terreno.desmarcarPosicao(pos[0], pos[1]);
         this.somarVetores2D(this.posicao, this.bussola.obterVetorDirecao(this.obterDirecao()));
-        this.terreno.marcarPosicao(pos[0], pos[1]);
     }
 
     public void lerSinal(char sinal) throws InvalidParameterException {
