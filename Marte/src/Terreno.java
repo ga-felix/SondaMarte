@@ -8,4 +8,5 @@ public interface Terreno {
 
     public void marcarPosicao(int x, int y);
 
+    public boolean temObstaculo(int x, int y);
 }
