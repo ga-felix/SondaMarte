@@ -26,6 +26,10 @@ public class Planalto implements Terreno {
         this.area[x][y] = 1;
     }
 
+    public void desmarcarPosicao(int x, int y) {
+        this.area[x][y] = 0;
+    }
+
     public boolean temObstaculo(int x, int y) {
         return (this.area[x][y] == 1);
     }

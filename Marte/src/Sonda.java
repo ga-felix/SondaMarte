@@ -16,12 +16,13 @@ public class Sonda implements Rastreavel {
         return (pos[0] >= 0 && pos[0] < alvo.obterLinhas() && pos[1] >= 0 && pos[1] < alvo.obterColunas());
     }
 
-    private Terreno tentarAterrissagem(Terreno alvo) throws IndexOutOfBoundsException {
-        if(this.aterrissou(alvo)) return alvo;
-        throw new IndexOutOfBoundsException("A sonda não conseguiu aterrisar no terreno.");
+    private Terreno tentarAterrissagem(Terreno alvo) throws Exception {
+        int[] pos = obterPosicaoAtual();
+        if(this.aterrissou(alvo) && !alvo.temObstaculo(pos[0], pos[1])) return alvo;
+        throw new Exception("A sonda não conseguiu aterrisar: ela caiu fora do terreno ou encontrou um obstáculo.");
     }
 
-    public Sonda(int x, int y, String direcaoCardinal, Terreno alvo) {
+    public Sonda(int x, int y, String direcaoCardinal, Terreno alvo) throws Exception {
         this.posicao = new int[]{x, y};
         this.direcaoCardinal = direcaoCardinal;
         this.bussola = new Bussola();
@@ -51,7 +52,10 @@ public class Sonda implements Rastreavel {
     }
 
     private void mover() {
+        int[] pos = obterPosicaoAtual();
+        this.terreno.desmarcarPosicao(pos[0], pos[1]);
         this.somarVetores2D(this.posicao, this.bussola.obterVetorDirecao(this.obterDirecao()));
+        this.terreno.marcarPosicao(pos[0], pos[1]);
     }
 
     public void lerSinal(char sinal) throws InvalidParameterException {
