@@ -25,16 +25,16 @@ public class Sonda implements Rastreavel {
         return this.direcaoCardinal;
     }
 
-    private void mudardirecaoCardinal(String novaDirecao) {
+    private void mudarDirecaoCardinal(String novaDirecao) {
         this.direcaoCardinal = novaDirecao;
     }
 
     private void girarEsquerda() {
-        this.mudardirecaoCardinal(this.bussola.calcularDirecaoAposGiro(this.obterDirecao(), "L"));
+        this.mudarDirecaoCardinal(this.bussola.calcularDirecaoAposGiro(this.obterDirecao(), "L"));
     }
 
     private void girarDireita() {
-        this.mudardirecaoCardinal(this.bussola.calcularDirecaoAposGiro(this.obterDirecao(), "R"));
+        this.mudarDirecaoCardinal(this.bussola.calcularDirecaoAposGiro(this.obterDirecao(), "R"));
     }
 
     private void mover() {
