@@ -1,3 +1,5 @@
+import java.security.InvalidParameterException;
+
 public class Sonda implements Rastreavel {
 
     private int[] posicao;
@@ -15,11 +17,11 @@ public class Sonda implements Rastreavel {
         vetorA[1] += vetorB[1];
     }
 
-    public int[] posicaoAtual() {
+    public int[] obterPosicaoAtual() {
         return this.posicao;
     }
 
-    public String apontaPara() {
+    public String obterDirecao() {
         return this.direcaoCardinal;
     }
 
@@ -28,18 +30,18 @@ public class Sonda implements Rastreavel {
     }
 
     private void girarEsquerda() {
-        this.mudardirecaoCardinal(this.bussola.calcularGiro(this.apontaPara(), "L"));
+        this.mudardirecaoCardinal(this.bussola.calcularDirecaoAposGiro(this.obterDirecao(), "L"));
     }
 
     private void girarDireita() {
-        this.mudardirecaoCardinal(this.bussola.calcularGiro(this.apontaPara(), "R"));
+        this.mudardirecaoCardinal(this.bussola.calcularDirecaoAposGiro(this.obterDirecao(), "R"));
     }
 
     private void mover() {
-        this.somarVetores2D(this.posicao, this.bussola.obterVetorDirecao(this.apontaPara()));
+        this.somarVetores2D(this.posicao, this.bussola.obterVetorDirecao(this.obterDirecao()));
     }
 
-    public void lerSinal(char sinal) {
+    public void lerSinal(char sinal) throws InvalidParameterException {
         switch(sinal) {
             case 'L':
                 this.girarEsquerda();
@@ -50,6 +52,8 @@ public class Sonda implements Rastreavel {
             case 'M':
                 this.mover();
                 break;
+            default:
+                throw new InvalidParameterException("A sonda recebeu um sinal desconhecido.");
         }
     }
 }

@@ -1,5 +1,7 @@
 public interface Rastreavel {
 
-    public int[] posicaoAtual();
+    public int[] obterPosicaoAtual();
+
+    public String obterDirecao();
 
 }

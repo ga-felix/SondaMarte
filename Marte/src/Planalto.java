@@ -16,7 +16,7 @@ public class Planalto {
     }
 
     private boolean estaNoPlanalto(Rastreavel objeto) {
-        int[] pos = objeto.posicaoAtual();
+        int[] pos = objeto.obterPosicaoAtual();
         return (pos[0] > 0 && pos[0] < this.linhas && pos[1] > 0 && pos[1] < this.colunas);
     }
 
