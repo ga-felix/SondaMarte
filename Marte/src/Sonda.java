@@ -7,16 +7,18 @@ public class Sonda implements Rastreavel {
     private Bussola bussola;
     private Terreno terreno;
 
+    public int[] obterPosicaoAtual() {
+        return this.posicao;
+    }
+
     private boolean aterrissou(Terreno alvo) {
         int[] pos = this.obterPosicaoAtual();
         return (pos[0] > 0 && pos[0] < alvo.obterLinhas() && pos[1] > 0 && pos[1] < alvo.obterColunas());
     }
 
     private Terreno tentarAterrissagem(Terreno alvo) throws IndexOutOfBoundsException {
-        if(this.aterrissou(alvo)) {
-            return alvo;
-        }
-        throw new IndexOutOfBoundsException("A sonda não conseguiu aterrisar no planalto.");
+        if(this.aterrissou(alvo)) return alvo;
+        throw new IndexOutOfBoundsException("A sonda não conseguiu aterrisar no terreno.");
     }
 
     public Sonda(int x, int y, String direcaoCardinal, Terreno alvo) {
@@ -24,10 +26,7 @@ public class Sonda implements Rastreavel {
         this.direcaoCardinal = direcaoCardinal;
         this.bussola = new Bussola();
         this.terreno = this.tentarAterrissagem(alvo);
-    }
-
-    public int[] obterPosicaoAtual() {
-        return this.posicao;
+        this.terreno.marcarPosicao(x, y);
     }
 
     public String obterDirecao() {

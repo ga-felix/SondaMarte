@@ -21,4 +21,8 @@ public class Planalto implements Terreno {
     public int[][] obterTerreno() {
         return this.area;
     }
+
+    public void marcarPosicao(int x, int y) {
+        this.area[x][y] = 1;
+    }
 }
