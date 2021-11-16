@@ -1,5 +1,5 @@
 interface ObjetoMovel {
 
-    public void move();
+    public void mover();
 
 }
