@@ -13,7 +13,7 @@ public class Sonda implements Rastreavel {
 
     private boolean aterrissou(Terreno alvo) {
         int[] pos = this.obterPosicaoAtual();
-        return (pos[0] > 0 && pos[0] < alvo.obterLinhas() && pos[1] > 0 && pos[1] < alvo.obterColunas());
+        return (pos[0] >= 0 && pos[0] < alvo.obterLinhas() && pos[1] >= 0 && pos[1] < alvo.obterColunas());
     }
 
     private Terreno tentarAterrissagem(Terreno alvo) throws IndexOutOfBoundsException {
