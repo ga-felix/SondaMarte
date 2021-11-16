@@ -1,10 +1,6 @@
-import java.util.List;
-import java.util.ArrayList;
-
-public class Planalto {
+public class Planalto implements Terreno {
 
     private int[][] area;
-    private List<Rastreavel> entidades;
     private int linhas;
     private int colunas;
 
@@ -12,18 +8,17 @@ public class Planalto {
         this.area = new int[linhas][colunas]; 
         this.linhas = linhas;
         this.colunas = colunas;
-        this.entidades = new ArrayList<Rastreavel>();
     }
 
-    private boolean estaNoPlanalto(Rastreavel objeto) {
-        int[] pos = objeto.obterPosicaoAtual();
-        return (pos[0] > 0 && pos[0] < this.linhas && pos[1] > 0 && pos[1] < this.colunas);
+    public int obterLinhas() {
+        return this.linhas;
     }
 
-    public void entrar(Rastreavel objeto) throws IndexOutOfBoundsException {
-        if(this.estaNoPlanalto(objeto)) {
-            this.entidades.add(objeto);
-        }
-        throw new IndexOutOfBoundsException("A sonda não conseguiu aterrisar no planalto.");
+    public int obterColunas() {
+        return this.colunas;
+    }
+
+    public int[][] obterTerreno() {
+        return this.area;
     }
 }
