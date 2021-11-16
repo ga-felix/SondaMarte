@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
-class Sonda implements ObjetoMovel {
+class Sonda {
 
     private int[] posicao;
     private String pontoCardeal;
