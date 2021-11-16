@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
-class Bussola {
+public class Bussola {
 
     private Map<String, int[]> direcao;
     private Map<String, HashMap<String, String>> giros;
@@ -14,7 +14,7 @@ class Bussola {
         this.giros.put(direcao, transicoes);
     }
 
-    Bussola() {
+    public Bussola() {
         this.direcao = new HashMap<String, int[]>();
         this.giros = new HashMap<String, HashMap<String, String>>();
         this.adicionarDirecao("N", new int[]{0, 1}, "W", "E");
