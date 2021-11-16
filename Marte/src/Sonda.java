@@ -1,20 +1,13 @@
-import java.util.HashMap;
-import java.util.Map;
-
 class Sonda {
 
     private int[] posicao;
     private String pontoCardeal;
-    private Map<String, int[]> direcao;
+    private Bussola bussola;
 
     Sonda(int x, int y, String pontoCardeal) {
         this.posicao = new int[]{x, y};
         this.pontoCardeal = pontoCardeal;
-        this.direcao = new HashMap<String, int[]>();
-        this.direcao.put("N", new int[]{0, 1});
-        this.direcao.put("S", new int[]{0, -1});
-        this.direcao.put("E", new int[]{1, 0});
-        this.direcao.put("W", new int[]{-1, 0});
+        this.bussola = new Bussola();
     }
 
     private void somarVetores2D(int[] vetorA, int[] vetorB) {
@@ -30,7 +23,19 @@ class Sonda {
         return this.pontoCardeal;
     }
 
+    private void mudarPontoCardeal(String novoPonto) {
+        this.pontoCardeal = novoPonto;
+    }
+
+    public void girarEsquerda() {
+
+    }
+
+    public void girarDireita() {
+        
+    }
+
     public void mover() {
-        this.somarVetores2D(this.posicao, this.direcao.get(this.apontaPara()));
+        this.somarVetores2D(this.posicao, this.bussola.obterVetorDirecao(this.apontaPara()));
     }
 }
