@@ -1,5 +1,4 @@
 import java.security.InvalidParameterException;
-import java.lang.Integer;
 
 public class Sonda implements Rastreavel {
 
