@@ -1,12 +1,21 @@
 import java.util.Arrays;
+import java.util.Scanner;
+
+// https://stackoverflow.com/questions/23506429/how-to-read-multiple-integer-values-from-a-single-line-of-input-in-java
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Terreno terreno = new Planalto(5, 5);
-        Sonda sonda = new Sonda(0, 0, "N");
-        Controlador controladorTeste = new Controlador(sonda, terreno);
-        System.out.println(Arrays.toString(sonda.obterPosicaoAtual()));
-        controladorTeste.receberAcao('M');
-        System.out.println(Arrays.toString(sonda.obterPosicaoAtual()));
+        Terreno terreno;
+        Sonda sonda;
+        Scanner scanner = new Scanner(System.in);
+        String entrada;
+        boolean terrenoNaoCriado = true;
+        while(true) {
+            if(terrenoNaoCriado) {
+                terrenoNaoCriado = false;
+            } else {
+                scanner.next();
+            }
+        }
     }
 }

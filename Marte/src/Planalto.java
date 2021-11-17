@@ -1,13 +1,22 @@
+import java.util.Map;
+import java.util.HashMap;
+import java.lang.Boolean;
+
 public class Planalto implements Terreno {
 
-    private int[][] area;
+    private Map<int[], Boolean> area;
     private int linhas;
     private int colunas;
 
     public Planalto(int linhas, int colunas) {
-        this.area = new int[linhas][colunas]; 
+        this.area = new HashMap<int[], Boolean>();
         this.linhas = linhas;
         this.colunas = colunas;
+        for(int linha = 0; linha < linhas; linha++) {
+            for(int coluna = 0; coluna < colunas; coluna++) {
+                this.area.put(new int[]{linha, coluna}, Boolean.valueOf(false));
+            }
+        }
     }
 
     public int obterLinhas() {
@@ -18,19 +27,15 @@ public class Planalto implements Terreno {
         return this.colunas;
     }
 
-    public int[][] obterTerreno() {
-        return this.area;
+    public void marcarPosicao(int[] pos) {
+        this.area.put(pos, Boolean.valueOf(true));
     }
 
-    public void marcarPosicao(int x, int y) {
-        this.area[x][y] = 1;
+    public void desmarcarPosicao(int[] pos) {
+        this.area.put(pos, Boolean.valueOf(true));
     }
 
-    public void desmarcarPosicao(int x, int y) {
-        this.area[x][y] = 0;
-    }
-
-    public boolean temObstaculo(int x, int y) {
-        return (this.area[x][y] == 1);
+    public boolean temObstaculo(int[] pos) {
+        return (this.area.get(pos).booleanValue());
     }
 }
