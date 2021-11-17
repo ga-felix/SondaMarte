@@ -5,8 +5,8 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Terreno terreno = new Planalto(3, 3); // Cuidado, ele passará a coordenada do ponto superior
-        Explorador sonda = new Sonda(4, 2, "N"); // direito, não as dimensões do planalto!
+        Terreno terreno = new Planalto(3, 3);
+        Explorador sonda = new Sonda(4, 2, "N");
         sonda.aterrissar(terreno);
         sonda.definirPosicao(2, 2);
         sonda.aterrissar(terreno);
@@ -16,6 +16,8 @@ public class App {
         System.out.println("2 " + sonda2.obterPosicaoAtual());
         sonda2.definirPosicao(2, 1);
         sonda2.aterrissar(terreno);
+        sonda2.acao('M');
+        sonda.acao('M');
         /*Scanner scanner = new Scanner(System.in);
         String entrada;
         boolean terrenoNaoCriado = true;

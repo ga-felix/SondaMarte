@@ -31,6 +31,7 @@ public class Sonda implements Explorador {
         if(this.consegueAterrissar(alvo) && !alvo.temObstaculo(pos)) {
             this.terreno = alvo;
             alvo.marcarPosicao(pos);
+            System.out.println("Aterrissagem foi um sucesso!");
         }
         else {
             System.out.println("Aterrissagem da sonda falhou. Tente mudar as coordenadas de posicao.");
@@ -59,12 +60,16 @@ public class Sonda implements Explorador {
 
     private void mover() {
         Posicao2D posFuturo = Posicao2D.somar(this.posicao, Posicao2D.lerVetor2D(this.bussola.obterVetorDirecao(this.obterDirecao())));
-        if(!this.terreno.temObstaculo(posFuturo)) {
-            this.terreno.desmarcarPosicao(this.posicao);
-            this.posicao = posFuturo;
-            this.terreno.marcarPosicao(this.posicao);
-        } else {
-            System.out.println("Obstáculo encontrado a frente. Não é possível mover a sonda.");
+        try {
+            if(!this.terreno.temObstaculo(posFuturo)) {
+                this.terreno.desmarcarPosicao(this.posicao);
+                this.posicao = posFuturo;
+                this.terreno.marcarPosicao(this.posicao);
+            } else {
+                System.out.println("Obstáculo encontrado a frente. Não é possível mover a sonda.");
+            }
+        } catch(NullPointerException exception) {
+            System.out.println("Não é possível mover. Verifique se o movimento está dentro do terreno.");
         }
     }
 
