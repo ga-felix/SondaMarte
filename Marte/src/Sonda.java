@@ -56,12 +56,8 @@ public class Sonda implements Rastreavel {
         this.mudarDirecaoCardinal(this.bussola.calcularDirecaoAposGiro(this.obterDirecao(), "R"));
     }
 
-    private int[] somarVetores2D(int[] vetorA, int[] vetorB) {
-        return new int[]{vetorA[0] + vetorB[0], vetorA[1] + vetorB[1]};
-    }
-
     private void mover() {
-        int[] posFuturo = this.somarVetores2D(this.posicao, this.bussola.obterVetorDirecao(this.obterDirecao()));
+        Posicao2D posFuturo = Posicao2D.somar(this.posicao, Posicao2D.lerVetor2D(this.bussola.obterVetorDirecao(this.obterDirecao())));
         if(!this.terreno.temObstaculo(posFuturo)) {
             this.posicao = posFuturo;
         } else {

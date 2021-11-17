@@ -32,7 +32,7 @@ public class Planalto implements Terreno {
     }
 
     public void desmarcarPosicao(Posicao2D pos) {
-        this.area.put(pos, Boolean.valueOf(true));
+        this.area.put(pos, Boolean.valueOf(false));
     }
 
     public boolean temObstaculo(Posicao2D pos) {

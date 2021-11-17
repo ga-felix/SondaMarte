@@ -33,4 +33,14 @@ public class Posicao2D {
         return this.obterX() + this.obterY();
     }
 
+    public static Posicao2D lerVetor2D(int[] pos) {
+        if(pos.length != 2) return null;
+        return new Posicao2D(pos[0], pos[1]);
+    }
+
+    public static Posicao2D somar(Posicao2D a, Posicao2D b) {
+        return new Posicao2D(a.obterX() + b.obterX(), a.obterY() + b.obterY());
+    }
+        
+
 }
