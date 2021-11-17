@@ -3,11 +3,11 @@ import java.util.Map;
 
 class Bussola {
 
-    private Map<String, int[]> vetoresDirecao;
+    private Map<String, Vetor2D> vetoresDirecao;
     private Map<String, HashMap<String, String>> giroDirecao;
 
-    private void adicionarDirecao(String direcao, int[] vetor, String direcaoEsquerda, String direcaoDireira) {
-        this.vetoresDirecao.put(direcao, vetor);
+    private void adicionarDirecao(String direcao, Vetor2D pos, String direcaoEsquerda, String direcaoDireira) {
+        this.vetoresDirecao.put(direcao, pos);
         HashMap<String, String> giros = new HashMap<String, String>();
         giros.put("L", direcaoEsquerda);
         giros.put("R", direcaoDireira);
@@ -15,15 +15,15 @@ class Bussola {
     }
 
     protected Bussola() {
-        this.vetoresDirecao = new HashMap<String, int[]>();
+        this.vetoresDirecao = new HashMap<String, Vetor2D>();
         this.giroDirecao = new HashMap<String, HashMap<String, String>>();
-        this.adicionarDirecao("N", new int[]{0, 1}, "W", "E");
-        this.adicionarDirecao("S", new int[]{0, -1}, "E", "W");
-        this.adicionarDirecao("E", new int[]{1, 0}, "N", "S");
-        this.adicionarDirecao("W", new int[]{-1, 0}, "S", "N");
+        this.adicionarDirecao("N", new Vetor2D(0, 1), "W", "E");
+        this.adicionarDirecao("S", new Vetor2D(0, -1), "E", "W");
+        this.adicionarDirecao("E", new Vetor2D(1, 0), "N", "S");
+        this.adicionarDirecao("W", new Vetor2D(-1, 0), "S", "N");
     }
 
-    protected int[] obterVetorDirecao(String direcao) {
+    protected Vetor2D obterVetorDirecao(String direcao) {
         return this.vetoresDirecao.get(direcao);
     }
 

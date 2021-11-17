@@ -2,32 +2,34 @@ import java.security.InvalidParameterException;
 
 public class Sonda implements Explorador {
 
-    private Posicao2D posicao;
+    private Vetor2D posicao;
     private String direcaoCardinal;
     private Bussola bussola;
     private Terreno terreno;
 
     public Sonda(int x, int y, String direcaoCardinal) {
-        this.posicao = new Posicao2D(x, y);
+        this.posicao = new Vetor2D(x, y);
         this.mudarDirecaoCardinal(direcaoCardinal);
         this.bussola = new Bussola();
         this.terreno = null;
     }
 
+    @Override
     public void definirPosicao(int x, int y) {
         if(terreno != null) return;
         this.posicao.definir(x, y);
     }
 
     private boolean consegueAterrissar(Terreno alvo) {
-        Posicao2D pos = this.obterPosicaoAtual();
+        Vetor2D pos = this.obterPosicaoAtual();
         int x = pos.obterX();
         int y = pos.obterY();
         return (x >= 0 && x < alvo.obterLinhas() && y >= 0 && y < alvo.obterColunas());
     }
 
+    @Override
     public void aterrissar(Terreno alvo) {
-        Posicao2D pos = this.obterPosicaoAtual();
+        Vetor2D pos = this.obterPosicaoAtual();
         if(this.consegueAterrissar(alvo) && !alvo.temObstaculo(pos)) {
             this.terreno = alvo;
             alvo.marcarPosicao(pos);
@@ -38,10 +40,12 @@ public class Sonda implements Explorador {
         }
     }
 
-    public Posicao2D obterPosicaoAtual() {
+    @Override
+    public Vetor2D obterPosicaoAtual() {
         return this.posicao;
     }
 
+    @Override
     public String obterDirecao() {
         return this.direcaoCardinal;
     }
@@ -59,7 +63,7 @@ public class Sonda implements Explorador {
     }
 
     private void mover() {
-        Posicao2D posFuturo = Posicao2D.somar(this.posicao, Posicao2D.lerVetor2D(this.bussola.obterVetorDirecao(this.obterDirecao())));
+        Vetor2D posFuturo = Vetor2D.somar(this.posicao, Vetor2D.lerVetor2D(this.bussola.obterVetorDirecao(this.obterDirecao())));
         try {
             if(!this.terreno.temObstaculo(posFuturo)) {
                 this.terreno.desmarcarPosicao(this.posicao);
@@ -73,6 +77,7 @@ public class Sonda implements Explorador {
         }
     }
 
+    @Override
     public void acao(char sinal) throws InvalidParameterException {
         if(this.terreno == null) {
             System.out.println("A sonda não aterrissou ainda e portanto não pode receber sinais.");

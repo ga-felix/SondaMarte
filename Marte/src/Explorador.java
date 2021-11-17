@@ -1,6 +1,6 @@
 public interface Explorador {
 
-    public Posicao2D obterPosicaoAtual();
+    public Vetor2D obterPosicaoAtual();
 
     public String obterDirecao();
 

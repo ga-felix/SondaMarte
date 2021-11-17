@@ -4,9 +4,9 @@ public interface Terreno {
 
     public int obterColunas();
 
-    public void marcarPosicao(Posicao2D pos);
+    public void marcarPosicao(Vetor2D pos);
 
-    public void desmarcarPosicao(Posicao2D pos);
+    public void desmarcarPosicao(Vetor2D pos);
 
-    public boolean temObstaculo(Posicao2D pos);
+    public boolean temObstaculo(Vetor2D pos);
 }
