@@ -26,8 +26,9 @@ public class Sonda implements Rastreavel {
 
     public void aterrissar(Terreno alvo) {
         int[] pos = this.obterPosicaoAtual();
-        if(this.consegueAterrissar(alvo) && !alvo.temObstaculo(pos)) {
-            this.aterrisou = true;
+        if(this.consegueAterrissar(alvo) && !alvo.temObstaculo(pos)) this.aterrisou = true;
+        else {
+            System.out.println("Aterrissagem da sonda falhou. Tente mudar as coordenadas de posicao.");
         }
     }
 
@@ -56,7 +57,6 @@ public class Sonda implements Rastreavel {
     }
 
     private void mover() {
-        if(!this.aterrisou) return;
         int[] posFuturo = this.somarVetores2D(this.posicao, this.bussola.obterVetorDirecao(this.obterDirecao()));
         if(!this.terreno.temObstaculo(posFuturo)) {
             this.posicao = posFuturo;
@@ -66,6 +66,10 @@ public class Sonda implements Rastreavel {
     }
 
     public void acao(char sinal) throws InvalidParameterException {
+        if(!this.aterrisou) {
+            System.out.println("A sonda não aterrissou ainda e portanto não pode receber sinais.");
+            return;
+        }
         switch(sinal) {
             case 'L':
                 this.girarEsquerda();
