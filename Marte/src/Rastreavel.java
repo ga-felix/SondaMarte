@@ -6,4 +6,8 @@ public interface Rastreavel {
 
     public void acao(char acao);
 
+    public void aterrissar(Terreno terreno);
+
+    public void definirPosicao(int x, int y);
+
 }
