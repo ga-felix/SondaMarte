@@ -15,6 +15,7 @@ public class Sonda implements Explorador {
     }
 
     public void definirPosicao(int x, int y) {
+        if(terreno != null) return;
         this.posicao.definir(x, y);
     }
 

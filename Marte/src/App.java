@@ -10,10 +10,12 @@ public class App {
         sonda.aterrissar(terreno);
         sonda.definirPosicao(2, 2);
         sonda.aterrissar(terreno);
-        System.out.println("1 " + sonda.obterPosicaoAtual().obterX() + " " + sonda.obterPosicaoAtual().obterY());
-        Explorador sonda2 = new Sonda(2, 2, "S");
+        System.out.println("1 " + sonda.obterPosicaoAtual());
+        Explorador sonda2 = new Sonda(2, 2, "N");
         sonda2.aterrissar(terreno);
-        System.out.println("2 " + sonda2.obterPosicaoAtual().obterX() + " " + sonda2.obterPosicaoAtual().obterY());
+        System.out.println("2 " + sonda2.obterPosicaoAtual());
+        sonda2.definirPosicao(2, 1);
+        sonda2.aterrissar(terreno);
         /*Scanner scanner = new Scanner(System.in);
         String entrada;
         boolean terrenoNaoCriado = true;

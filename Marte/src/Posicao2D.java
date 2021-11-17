@@ -33,6 +33,10 @@ public class Posicao2D {
         return this.obterX() + this.obterY();
     }
 
+    public String toString() {
+        return String.format("(" + this.obterX() + ":" + this.obterY() + ")");
+    }
+
     public static Posicao2D lerVetor2D(int[] pos) {
         if(pos.length != 2) return null;
         return new Posicao2D(pos[0], pos[1]);
