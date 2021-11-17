@@ -98,4 +98,9 @@ public class Sonda implements Explorador {
         }
     }
 
+    @Override
+    public String toString() {
+        return String.format("Sonda (ID: " + this + "), (Posicao: " + this.posicao + "), (Direcao: " + this.direcaoCardinal + ")");
+    }
+
 }
