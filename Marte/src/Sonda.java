@@ -51,13 +51,18 @@ public class Sonda implements Rastreavel {
         this.mudarDirecaoCardinal(this.bussola.calcularDirecaoAposGiro(this.obterDirecao(), "R"));
     }
 
-    private void somarVetores2D(int[] vetorA, int[] vetorB) {
-        vetorA[0] += vetorB[0];
-        vetorA[1] += vetorB[1];
+    private int[] somarVetores2D(int[] vetorA, int[] vetorB) {
+        return new int[]{vetorA[0] + vetorB[0], vetorA[1] + vetorB[1]};
     }
 
     private void mover() {
-        this.somarVetores2D(this.posicao, this.bussola.obterVetorDirecao(this.obterDirecao()));
+        if(!this.aterrisou) return;
+        int[] posFuturo = this.somarVetores2D(this.posicao, this.bussola.obterVetorDirecao(this.obterDirecao()));
+        if(!this.terreno.temObstaculo(posFuturo)) {
+            this.posicao = posFuturo;
+        } else {
+            System.out.println("Obstáculo encontrado a frente. Não é possível mover a sonda.");
+        }
     }
 
     public void acao(char sinal) throws InvalidParameterException {
