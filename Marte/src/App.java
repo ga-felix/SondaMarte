@@ -7,7 +7,7 @@ public class App {
     public static void main(String[] args) throws Exception {
         Terreno terreno;
         Sonda sonda;
-        Scanner scanner = new Scanner(System.in);
+        /*Scanner scanner = new Scanner(System.in);
         String entrada;
         boolean terrenoNaoCriado = true;
         while(true) {
@@ -16,6 +16,6 @@ public class App {
             } else {
                 scanner.next();
             }
-        }
+        }*/
     }
 }

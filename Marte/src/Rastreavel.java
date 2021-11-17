@@ -1,5 +1,3 @@
-import java.util.List;
-
 public interface Rastreavel {
 
     public Posicao2D obterPosicaoAtual();
