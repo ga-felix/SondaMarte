@@ -1,6 +1,8 @@
+import java.util.List;
+
 public interface Rastreavel {
 
-    public int[] obterPosicaoAtual();
+    public List<Integer> obterPosicaoAtual();
 
     public String obterDirecao();
 

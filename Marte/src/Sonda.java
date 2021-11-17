@@ -1,38 +1,42 @@
 import java.security.InvalidParameterException;
+import java.lang.Integer;
 
 public class Sonda implements Rastreavel {
 
-    private int[] posicao;
+    private Posicao2D posicao;
     private String direcaoCardinal;
     private Bussola bussola;
-    private boolean aterrisou;
     private Terreno terreno;
 
     public Sonda(int x, int y, String direcaoCardinal) {
-        this.posicao = new int[]{x, y};
-        this.direcaoCardinal = direcaoCardinal;
+        this.definirPosicaoAterrissagem(x, y);
+        this.mudarDirecaoCardinal(direcaoCardinal);
         this.bussola = new Bussola();
-        this.aterrisou = false;
+        this.terreno = null;
     }
 
-    public void mudarPosicaoAterrissagem(int x, int y) {
-        this.posicao = new int[]{x, y};
+    public void definirPosicaoAterrissagem(int x, int y) {
+
     }
 
     private boolean consegueAterrissar(Terreno alvo) {
-        int[] pos = this.obterPosicaoAtual();
-        return (pos[0] >= 0 && pos[0] < alvo.obterLinhas() && pos[1] >= 0 && pos[1] < alvo.obterColunas());
+        ArrayList<Integer> pos = this.obterPosicaoAtual();
+        int x = pos.get(0).intValue();
+        int y = pos.get(1).intValue();
+        return (x >= 0 && x < alvo.obterLinhas() && y >= 0 && y < alvo.obterColunas());
     }
 
     public void aterrissar(Terreno alvo) {
-        int[] pos = this.obterPosicaoAtual();
-        if(this.consegueAterrissar(alvo) && !alvo.temObstaculo(pos)) this.aterrisou = true;
+        ArrayList<Integer> pos = this.obterPosicaoAtual();
+        if(this.consegueAterrissar(alvo) && !alvo.temObstaculo(pos)) {
+            this.terreno = alvo;
+        }
         else {
             System.out.println("Aterrissagem da sonda falhou. Tente mudar as coordenadas de posicao.");
         }
     }
 
-    public int[] obterPosicaoAtual() {
+    public ArrayList<Integer> obterPosicaoAtual() {
         return this.posicao;
     }
 
@@ -66,7 +70,7 @@ public class Sonda implements Rastreavel {
     }
 
     public void acao(char sinal) throws InvalidParameterException {
-        if(!this.aterrisou) {
+        if(this.terreno == null) {
             System.out.println("A sonda não aterrissou ainda e portanto não pode receber sinais.");
             return;
         }
