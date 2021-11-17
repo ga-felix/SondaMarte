@@ -1,6 +1,6 @@
 import java.security.InvalidParameterException;
 
-public class Sonda implements Rastreavel {
+public class Sonda implements Explorador {
 
     private Posicao2D posicao;
     private String direcaoCardinal;
@@ -29,6 +29,7 @@ public class Sonda implements Rastreavel {
         Posicao2D pos = this.obterPosicaoAtual();
         if(this.consegueAterrissar(alvo) && !alvo.temObstaculo(pos)) {
             this.terreno = alvo;
+            alvo.marcarPosicao(pos);
         }
         else {
             System.out.println("Aterrissagem da sonda falhou. Tente mudar as coordenadas de posicao.");
@@ -58,7 +59,9 @@ public class Sonda implements Rastreavel {
     private void mover() {
         Posicao2D posFuturo = Posicao2D.somar(this.posicao, Posicao2D.lerVetor2D(this.bussola.obterVetorDirecao(this.obterDirecao())));
         if(!this.terreno.temObstaculo(posFuturo)) {
+            this.terreno.desmarcarPosicao(this.posicao);
             this.posicao = posFuturo;
+            this.terreno.marcarPosicao(this.posicao);
         } else {
             System.out.println("Obstáculo encontrado a frente. Não é possível mover a sonda.");
         }

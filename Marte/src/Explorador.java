@@ -1,4 +1,4 @@
-public interface Rastreavel {
+public interface Explorador {
 
     public Posicao2D obterPosicaoAtual();
 
