@@ -20,13 +20,17 @@ public class Posicao2D {
         this.definir(x, y);
     }
 
-    public boolean equals(Object o) {
-        if (o == this)
+    public boolean equals(Object obj) {
+        if (obj == this)
             return true;
-        if (!(o instanceof Posicao2D))
+        if (!(obj instanceof Posicao2D))
             return false;
-        Posicao2D other = (Posicao2D) o;
-        return (this.obterX() == other.obterX() && this.obterY() == other.obterY());
+        Posicao2D outro = (Posicao2D) obj;
+        return (this.obterX() == outro.obterX() && this.obterY() == outro.obterY());
+    }
+
+    public final int hashCode() {
+        return this.obterX() + this.obterY();
     }
 
 }
