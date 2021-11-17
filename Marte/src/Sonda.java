@@ -9,25 +9,25 @@ public class Sonda implements Rastreavel {
     private Terreno terreno;
 
     public Sonda(int x, int y, String direcaoCardinal) {
-        this.definirPosicaoAterrissagem(x, y);
+        this.posicao = new Posicao2D(x, y);
         this.mudarDirecaoCardinal(direcaoCardinal);
         this.bussola = new Bussola();
         this.terreno = null;
     }
 
-    public void definirPosicaoAterrissagem(int x, int y) {
-
+    public void definirPosicao(int x, int y) {
+        this.posicao.definir(x, y);
     }
 
     private boolean consegueAterrissar(Terreno alvo) {
-        ArrayList<Integer> pos = this.obterPosicaoAtual();
-        int x = pos.get(0).intValue();
-        int y = pos.get(1).intValue();
+        Posicao2D pos = this.obterPosicaoAtual();
+        int x = pos.obterX();
+        int y = pos.obterY();
         return (x >= 0 && x < alvo.obterLinhas() && y >= 0 && y < alvo.obterColunas());
     }
 
     public void aterrissar(Terreno alvo) {
-        ArrayList<Integer> pos = this.obterPosicaoAtual();
+        Posicao2D pos = this.obterPosicaoAtual();
         if(this.consegueAterrissar(alvo) && !alvo.temObstaculo(pos)) {
             this.terreno = alvo;
         }
@@ -36,7 +36,7 @@ public class Sonda implements Rastreavel {
         }
     }
 
-    public ArrayList<Integer> obterPosicaoAtual() {
+    public Posicao2D obterPosicaoAtual() {
         return this.posicao;
     }
 

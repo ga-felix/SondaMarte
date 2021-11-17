@@ -4,17 +4,17 @@ import java.lang.Boolean;
 
 public class Planalto implements Terreno {
 
-    private Map<int[], Boolean> area;
+    private Map<Posicao2D, Boolean> area;
     private int linhas;
     private int colunas;
 
     public Planalto(int linhas, int colunas) {
-        this.area = new HashMap<int[], Boolean>();
+        this.area = new HashMap<Posicao2D, Boolean>();
         this.linhas = linhas;
         this.colunas = colunas;
         for(int linha = 0; linha < linhas; linha++) {
             for(int coluna = 0; coluna < colunas; coluna++) {
-                this.area.put(new int[]{linha, coluna}, Boolean.valueOf(false));
+                this.area.put(new Posicao2D(linha, coluna), Boolean.valueOf(false));
             }
         }
     }
@@ -27,15 +27,15 @@ public class Planalto implements Terreno {
         return this.colunas;
     }
 
-    public void marcarPosicao(int[] pos) {
+    public void marcarPosicao(Posicao2D pos) {
         this.area.put(pos, Boolean.valueOf(true));
     }
 
-    public void desmarcarPosicao(int[] pos) {
+    public void desmarcarPosicao(Posicao2D pos) {
         this.area.put(pos, Boolean.valueOf(true));
     }
 
-    public boolean temObstaculo(int[] pos) {
+    public boolean temObstaculo(Posicao2D pos) {
         return (this.area.get(pos).booleanValue());
     }
 }

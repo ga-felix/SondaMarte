@@ -1,28 +1,32 @@
-import java.util.List;
-import java.util.ArrayList;
-import java.lang.Integer;
-
 public class Posicao2D {
     
-    private List<Integer> posicao;
+    private int x;
+    private int y;
 
     public int obterX() {
-        return this.posicao.get(0).intValue();
+        return this.x;
     }
 
     public int obterY() {
-        return this.posicao.get(1).intValue();
+        return this.y;
     }
 
     public void definir(int x, int y) {
-        this.posicao.set(0, Integer.valueOf(x));
-        this.posicao.set(1, Integer.valueOf(y));
+        this.x = x;
+        this.y = y;
     }   
 
     public Posicao2D(int x, int y) {
-        this.posicao = new ArrayList<Integer>(2);
-        this.posicao.add(0, Integer.valueOf(x));
-        this.posicao.add(1, Integer.valueOf(y));
+        this.definir(x, y);
+    }
+
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        if (!(o instanceof Posicao2D))
+            return false;
+        Posicao2D other = (Posicao2D) o;
+        return (this.obterX() == other.obterX() && this.obterY() == other.obterY());
     }
 
 }
