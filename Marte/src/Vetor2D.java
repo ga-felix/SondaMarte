@@ -37,11 +37,6 @@ public class Vetor2D {
         return String.format("(" + this.obterX() + ":" + this.obterY() + ")");
     }
 
-    public static Vetor2D lerVetor2D(int[] pos) {
-        if(pos.length != 2) return null;
-        return new Vetor2D(pos[0], pos[1]);
-    }
-
     public static Vetor2D somar(Vetor2D a, Vetor2D b) {
         return new Vetor2D(a.obterX() + b.obterX(), a.obterY() + b.obterY());
     }

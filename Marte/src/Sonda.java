@@ -63,7 +63,7 @@ public class Sonda implements Explorador {
     }
 
     private void mover() {
-        Vetor2D posFuturo = Vetor2D.somar(this.posicao, Vetor2D.lerVetor2D(this.bussola.obterVetorDirecao(this.obterDirecao())));
+        Vetor2D posFuturo = Vetor2D.somar(this.posicao, this.bussola.obterVetorDirecao(this.obterDirecao()));
         try {
             if(!this.terreno.temObstaculo(posFuturo)) {
                 this.terreno.desmarcarPosicao(this.posicao);
