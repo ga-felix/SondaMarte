@@ -41,7 +41,7 @@ public class Sonda implements Rastreavel {
         this.somarVetores2D(this.posicao, this.bussola.obterVetorDirecao(this.obterDirecao()));
     }
 
-    public void lerSinal(char sinal) throws InvalidParameterException {
+    public void acao(char sinal) throws InvalidParameterException {
         switch(sinal) {
             case 'L':
                 this.girarEsquerda();

@@ -4,4 +4,6 @@ public interface Rastreavel {
 
     public String obterDirecao();
 
+    public void acao(char acao);
+
 }
