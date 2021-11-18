@@ -9,7 +9,7 @@ public class Console {
         this.scanner = new Scanner(System.in);
     }
 
-    public Vetor2D lerDadosTerreno() {
+    public Vetor2D lerTerreno() {
         String[] dimensoes = scanner.nextLine().trim().split("\\s+");
         if(dimensoes.length != 2) return null;
         int[] pos = new int[2];
@@ -17,6 +17,14 @@ public class Console {
             pos[indice] = Integer.parseInt(dimensoes[indice]);
         }
         return new Vetor2D(pos[0], pos[1]);
+    }
+
+    public Vetor2D lerDadosTerreno() {
+        Vetor2D dimensoes = null;
+        do {
+            dimensoes = this.lerTerreno();
+        } while(dimensoes == null);
+        return dimensoes;
     }
 
     public Sonda lerSonda() {
