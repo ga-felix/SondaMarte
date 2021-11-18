@@ -14,6 +14,10 @@ public class Sonda implements Explorador {
         this.terreno = null;
     }
 
+    public boolean aterrissou() {
+        return(this.terreno != null);
+    }
+
     @Override
     public void definirPosicao(int x, int y) {
         if(terreno != null) return;
@@ -100,7 +104,7 @@ public class Sonda implements Explorador {
 
     @Override
     public String toString() {
-        return String.format("Sonda (ID: " + this + "), (Posicao: " + this.posicao + "), (Direcao: " + this.direcaoCardinal + ")");
+        return "(Posicao: " + this.obterPosicaoAtual() + "), (Direcao: " + this.obterDirecao() + ")";
     }
 
 }

@@ -1,30 +1,15 @@
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.ArrayList;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Terreno terreno = new Planalto(3, 3);
-        Explorador sonda = new Sonda(4, 2, "N");
-        sonda.aterrissar(terreno);
-        sonda.definirPosicao(2, 2);
-        sonda.aterrissar(terreno);
-        System.out.println("1 " + sonda.obterPosicaoAtual());
-        Explorador sonda2 = new Sonda(2, 2, "N");
-        sonda2.aterrissar(terreno);
-        System.out.println("2 " + sonda2.obterPosicaoAtual());
-        sonda2.definirPosicao(2, 1);
-        sonda2.aterrissar(terreno);
-        sonda2.acao('M');
-        sonda.acao('M');
-        /*Scanner scanner = new Scanner(System.in);
-        String entrada;
-        boolean terrenoNaoCriado = true;
+        Console leitor = new Console();
+        Terreno planalto = new Planalto(leitor.lerDadosTerreno());
+        ArrayList<Sonda> sondas = new ArrayList<Sonda>();
         while(true) {
-            if(terrenoNaoCriado) {
-                terrenoNaoCriado = false;
-            } else {
-                scanner.next();
-            }
-        }*/
+            sondas.add(leitor.lerDadosSonda(planalto));
+            Sonda sonda = sondas.get(sondas.size() - 1);
+            leitor.executarComandos(sonda);
+            System.out.println(sonda);
+        }
     }
 }

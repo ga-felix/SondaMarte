@@ -10,4 +10,6 @@ public interface Explorador {
 
     public void definirPosicao(int x, int y);
 
+    public boolean aterrissou();
+
 }
