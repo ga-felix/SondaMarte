@@ -41,8 +41,8 @@ public class Console {
         Sonda sonda = null;
         do {
             sonda = this.lerSonda();
-            sonda.aterrissar(terreno);
-        } while(!sonda.aterrissou());
+            if(sonda != null) sonda.aterrissar(terreno);
+        } while(sonda == null || !sonda.aterrissou());
         return sonda;
     }
 
