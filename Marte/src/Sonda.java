@@ -7,8 +7,8 @@ public class Sonda implements Explorador {
     private Bussola bussola;
     private Terreno terreno;
 
-    public Sonda(int x, int y, String direcaoCardinal) {
-        this.posicao = new Vetor2D(x, y);
+    public Sonda(Vetor2D posicao, String direcaoCardinal) {
+        this.posicao = posicao;
         this.mudarDirecaoCardinal(direcaoCardinal);
         this.bussola = new Bussola();
         this.terreno = null;
