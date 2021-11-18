@@ -8,10 +8,10 @@ public class Planalto implements Terreno {
     private int linhas;
     private int colunas;
 
-    public Planalto(int xMaximo, int yMaximo) {
+    public Planalto(Vetor2D maximo) {
         this.area = new HashMap<Vetor2D, Boolean>();
-        this.linhas = xMaximo + 1;
-        this.colunas = yMaximo + 1;
+        this.linhas = maximo.obterX() + 1;
+        this.colunas = maximo.obterY() + 1;
         for(int linha = 0; linha < linhas; linha++) {
             for(int coluna = 0; coluna < colunas; coluna++) {
                 this.area.put(new Vetor2D(linha, coluna), Boolean.valueOf(false));
