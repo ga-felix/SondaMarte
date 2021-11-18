@@ -15,6 +15,7 @@
               <li><b>Terreno.java</b>: classes que implementarem essa interface serão terrenos exploráveis por exploradores. Qualquer terreno é explorável por um Explorador.</li>
               <li><b>Sonda.java</b>: implementa Explorador e é capaz de movimentar-se, mudar de direção e aterrissar.</li>
               <li><b>Planalto.java</b>: implementa Terreno e fornece métodos para serem utilizados por um Explorador.</li>
+              <li><b>Console.java</b>: garante a leitura dos dados na ordem correta.</li>
              </ul>
              <p><b>Colisão de sondas</b><br><hr>
              O planalto é, na verdade, uma matriz de duas dimensões que precisa ser percorrida. Várias sondas podem explorar um mesmo planalto, o que pode gerar uma colisão física. Para solucionar esse problema, existe uma estratégia que utiliza uma matriz esparsa para checagem de colisão. Porém, minha solução utilizou um Map, sendo as chaves todas as posições possíveis e valores armazenados variáveis booleanas. Para utilizar o Map junto com a classe Vetor2D, foi necessário fazer o override, em Vetor2D, dos métodos equals e hashCode. Dessa forma, um vetor 2D (1, 2) é equivalente a outro vetor 2D (1, 2), mas não igual a um outro vetor 2D (2, 1). Essa solução foi adotada devido a praticidade que o uso do Map traz em relação à matriz esparsa, porque já existem várias implementações de Map com métodos bons. Os valores booleanos fornecidos pelo Map são usados para verificar se há uma sonda (ou outro obstáculo, é possível) naquela posição.</p>
